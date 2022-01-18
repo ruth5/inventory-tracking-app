@@ -17,14 +17,14 @@ def get_items():
 
     return render_template('items.html', items = crud.get_items())
 
-@app.route('/items', methods = ['DELETE'])
-def delete_item():
-    """Display a table with the items in inventory."""
+@app.route('/items/<item_id>', methods = ['DELETE'])
+def delete_item(item_id):
+    """Delete an item from inventory."""
+    item_to_delete = crud.get_item_by_id(item_id)
+    db.session.delete(item_to_delete)
+    db.session.commit()
+    return jsonify(f"Item {item_id} deleted")
 
-    item_to_delete = request.form.get('item-to-delete')
-    print(f"item to delete is {item_to_delete}")
-
-    return render_template('items.html', items = crud.get_items())
 
 
 

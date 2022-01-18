@@ -34,6 +34,11 @@ def get_product_by_id(product_id):
 
     return Product.query.filter_by(id=product_id).first()
 
+def get_item_by_id(item_id):
+    """Returns a item with the given product id if it exists, otherwise return None"""
+
+    return Item.query.filter_by(id=item_id).first()
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app, echo=False)
