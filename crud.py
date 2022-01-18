@@ -23,11 +23,18 @@ def create_item(product_id, serial_number=None):
     return item
 
 def get_items():
-    """Get a list of all items in the database."""
+    """Get a list of all items in the database, ordered by product_id."""
 
-    items = Item.query.all()
+    items = Item.query.order_by(Item.product_id)
 
     return items
+
+def get_products():
+    """Get a list of all products in the database."""
+
+    products = Product.query.all()
+
+    return products
 
 def get_product_by_id(product_id):
     """Returns a product with the given product id if it exists, otherwise return None"""

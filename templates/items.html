@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block body %}
-<div class="row mt-4">
-    <div class="col-10 mb-12 mx-auto">
-        <h1>Inventory items</h1>
+<div class="row mt-4 mb-4">
+    <div class="col-10 mx-auto">
+        <h1>Item Inventory</h1>
         <h6>Showing all items in your inventory</h6>
     </div>
 </div>
@@ -27,6 +27,15 @@
 
 
             <tbody>
+                <tr>
+                    <td>
+                    </td>
+                    <td></td>
+                    <td>
+                        <a class="btn btn-outline-primary form-control" href="/new-item-form" role="button">Add a new item to inventory</a>
+
+                    </td>
+                </tr>
                 {% for item in items %}
                 <tr>
                     <td>{{item.product.product_name}}</td>
@@ -36,7 +45,7 @@
                     <td>N/A</td>
                     {% endif %}
                     <td>                
-                        <button type="submit" class="btn btn-primary form-control" name="item-to-delete" id={{item.id}}> Delete from inventory</button>
+                        <button type="submit" class="btn btn-outline-danger form-control" name="item-to-delete" id={{item.id}}> Delete from inventory</button>
                     </td>
                 </tr>
 
