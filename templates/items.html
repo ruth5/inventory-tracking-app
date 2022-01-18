@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Inventory Items{% endblock %}
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class="row mt-4">
+    <div class="col-10 mb-12 mx-auto">
+        <h1>Inventory items</h1>
+        <h6>Showing all items in your inventory</h6>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-10 mx-auto">
+
+        <table class="table">
+            <thead>
+                <th scope="col">Product Name</th>
+                <th scope="col">Serial Number</th>
+                <th scope="col">Delete?</th>
+            </thead>
+
+
+
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{item.product.product_name}}</td>
+                    {% if item.serial_number %}
+                    <td>{{item.serial_number}}</td>
+                    {% else %}
+                    <td>N/A</td>
+                    {% endif %}
+                    <td>                
+                        <button type="submit" class="btn btn-primary form-control" name="item-to-delete" value={{item.id}}> Delete from inventory</button>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+
+    </div>
+</div>
+
+<script src="/static/js/delete.js"></script>
+
+{% endblock %}

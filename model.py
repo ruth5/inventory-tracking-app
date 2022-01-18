@@ -13,6 +13,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     product_name = db.Column(db.String, nullable=False)
     SKU = db.Column(db.String, nullable=False, unique=True)
+    items = db.relationship("Item", back_populates="product")
 
     def __repr__(self):
         return f"<Product id={self.id}, product_name={self.product_name}, SKU={self.SKU}"
@@ -26,6 +27,7 @@ class Item(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     serial_number = db.Column(db.String)
+    product = db.relationship("Product", back_populates="items")
 
     def __repr__(self):
         return f"Item id={self.id}, product_id={self.product_id}, serial_number={self.serial_number}"
