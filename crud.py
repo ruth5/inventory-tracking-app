@@ -25,7 +25,7 @@ def create_item(product_id, serial_number=None):
 def get_items():
     """Get a list of all items in the database, ordered by product_id."""
 
-    items = Item.query.order_by(Item.product_id)
+    items = Item.query.order_by(Item.product_id, Item.id)
 
     return items
 

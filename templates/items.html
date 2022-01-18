@@ -21,6 +21,7 @@
             <thead>
                 <th scope="col">Product Name</th>
                 <th scope="col">Serial Number</th>
+                <th scope="col">Edit?</th>
                 <th scope="col">Delete?</th>
             </thead>
 
@@ -28,13 +29,15 @@
 
             <tbody>
                 <tr>
-                    <td>
-                    </td>
                     <td></td>
+                    <td></td>
+ 
                     <td>
-                        <a class="btn btn-outline-primary form-control" href="/new-item-form" role="button">Add a new item to inventory</a>
+                        <a class="btn btn-outline-primary form-control" href="/new-item-form" role="button">Add a new
+                            item to inventory</a>
 
                     </td>
+                    <td></td>
                 </tr>
                 {% for item in items %}
                 <tr>
@@ -44,8 +47,13 @@
                     {% else %}
                     <td>N/A</td>
                     {% endif %}
-                    <td>                
-                        <button type="submit" class="btn btn-outline-danger form-control" name="item-to-delete" id={{item.id}}> Delete from inventory</button>
+                    <td>
+                        <button type="button" class="btn btn-outline-warning form-control edit-button"
+                            name="item-to-edit" id={{item.id}}>Edit Item</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger form-control delete-button"
+                            name="item-to-delete" id={{item.id}}>Delete Item</button>
                     </td>
                 </tr>
 
@@ -58,6 +66,6 @@
     </div>
 </div>
 
-<script src="/static/js/delete.js"></script>
+<script src="/static/js/editAndDeleteButtons.js"></script>
 
 {% endblock %}

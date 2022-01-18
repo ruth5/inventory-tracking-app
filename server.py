@@ -31,6 +31,17 @@ def add_item():
         flash(f"A new {product.product_name} item was added to inventory")
     return render_template('items.html', items = crud.get_items())
 
+@app.route('/items/<item_id>', methods = ['PUT'])
+def edit_item(item_id):
+    """Edit an item's data."""
+
+    serial_number = request.json.get("serialNumber")
+    item = crud.get_item_by_id(item_id)
+    item.serial_number = serial_number
+    db.session.commit()
+    return { "success": True, "status": "Item data has been updated"}
+
+
 
 
 @app.route('/items/<item_id>', methods = ['DELETE'])
@@ -46,6 +57,13 @@ def show_new_item_form():
     """Display a form where users can generate new items."""
 
     return render_template('new-item-form.html', products = crud.get_products())
+
+@app.route('/edit-item-form', methods = ['GET'])
+def show_edit_item_form():
+    """Display a form where users can edit existing items."""
+
+    item_id = request.args.get('item-id')
+    return render_template('edit-item-form.html', item=crud.get_item_by_id(item_id))
 
 
 

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Edit Inventory Item Form{% endblock %}
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class="row mt-4 mb-4">
+    <div class="col-10 mx-auto">
+        <h1>Edit Inventory Item</h1>
+        <h6>Fill out the form below to edit an existing item in inventory</h6>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-10 mx-auto">
+        {% if item.serial_number %}
+        <p>Editting item data for <strong>{{item.product.product_name}}</strong> item with current serial number {{item.serial_number}}</p>
+        {% else %}
+        <p>Editting item data for <strong>{{item.product.product_name}}</strong> item. This item currently has no serial number.</p>
+        {% endif %}
+        <form>
+            <label for="serial-number" class="form-label">Enter the item's updated serial number (leave blank if no
+                serial)</label>
+            <input type="text" class="form-control mb-3" name="serial-number" id="serial-number">
+            <button type="button" class="btn btn-outline-primary edit-button" id={{item.id}}>Update this item's data</button>
+        </form>
+    </div>
+</div>
+
+<script src='/static/js/editForm.js'></script>
+
+
+{% endblock %}
