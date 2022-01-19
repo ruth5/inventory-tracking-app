@@ -16,7 +16,7 @@ Frontend: JavaScript, HTML/CSS, Bootstrap
 - `server.py` contains Flask server setup and all routes
 - `model.py` set up of PostgreSQL database that stores items, products, and warehouses
 - `crud.py` contain functions for interacting with the PostgreSQL database
-- `/static/templates/` contains all HTML Jinja templates
+- `/templates/` contains all HTML Jinja templates
 - `/static/js/` contains all JavaScript files, mainly used to send fetch requests to backend.
 - `tests.py` contains tests for the application
 
