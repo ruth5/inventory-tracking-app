@@ -8,7 +8,7 @@ This is an inventory tracking web application. The application has the following
 - Ability to create warehouses/locations and assign inventory to specific locations
 
 # Tech Stack
-Backend: Python, Flask, PostgreSQL, SQLAlchemy, Jinja2
+Backend: Python, Flask, PostgreSQL, SQLAlchemy, Jinja
 
 Frontend: JavaScript, HTML/CSS, Bootstrap
 
@@ -47,11 +47,11 @@ Users can also delete existing items from inventory, and create new items to add
     * `source env/bin/activate`
 - Install all dependencies:
     * `pip3 install -r requirements.txt`
-- Set up and seed the database (NOTE: this will drop the database and create a new one. Do not run this script if you do not want to drop the database)
+- Set up and seed the database (NOTE: this will drop the `inventory_track_app` PostgreSQL database and create a new one. Do not run this script if you do not want to drop the database)
     * run `python3 recreate_and_seed_db.py`
 - Start up the server and run the app!
     * run `python3 server.py`
-    * Navigate `localhost:5001` to see the app in your browser
+    * Navigate to `localhost:5001` to see the app in your browser
 
 # Running tests
 
@@ -67,6 +67,7 @@ Users can also delete existing items from inventory, and create new items to add
 In the future, I would prioritize the following as I worked to improve the app:
 - Add additional tests, including unit tests and integration tests, to improve test coverage
 - Create different inventory views, such as a view that shows item counts by product or by warehouse
-- Improve the UI for adding or editing new items. Currently adding/editing items involves redirection to a different page and then back to the item inventory. It would be nice if users could edit/add items with a modal or other tool on the same page.
+- Improve the UI for adding or editing new items. Currently adding/editing items involves redirection to a different page and then back to the item inventory. It would be nice if users could edit/add items with a modal or other tool on the item inventory page.
+- Add more error handling on the backend to display an error on the frontend if a CRUD action could not be completed (for instance, show users an error in the web app if an item was not successfully updated in the database)
 - Deploy the site
 
