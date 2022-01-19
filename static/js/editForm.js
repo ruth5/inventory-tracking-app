@@ -2,7 +2,6 @@
 'use strict';
 
 const button = document.getElementsByClassName("edit-button")[0]
-console.log(button)
 button.addEventListener('click',
     () => {
         const formInputs = {

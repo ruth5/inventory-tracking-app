@@ -43,7 +43,7 @@ def edit_item(item_id):
     item.serial_number = serial_number
     item.warehouse_id = int(warehouse_id)
     db.session.commit()
-    return { "success": True, "status": "Item data has been updated"}
+    return { "success": True, "status": f"Item data for this {item.product.product_name} item has been updated"}
 
 
 
@@ -69,9 +69,25 @@ def show_edit_item_form():
     item_id = request.args.get('item-id')
     return render_template('edit-item-form.html', item=crud.get_item_by_id(item_id), warehouses = crud.get_warehouses())
 
+@app.route('/new-warehouse-form', methods = ['GET'])
+def show_new_warehouse_form():
+    """Display a form where users can generate new warehouses."""
 
+    return render_template('new-warehouse-form.html')
 
+@app.route('/warehouses', methods = ['POST'])
+def create_warehouse():
+    """Add a new warehouse to database based on the output of the new warehouse form."""
 
+    warehouse_name = request.json.get("warehouseName")
+    street_address = request.json.get("streetAddress")
+    city = request.json.get("city")
+    state_or_province = request.json.get("state")
+    postal_code = request.json.get("postal-code")
+    country = request.json.get("country")
+    crud.create_warehouse(warehouse_name, street_address, city, state_or_province, postal_code, country)
+
+    return { "success": True, "status": f"New warehouse {warehouse_name} has been created."}
 
 
 if __name__ == "__main__":

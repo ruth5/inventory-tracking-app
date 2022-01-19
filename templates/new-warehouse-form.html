@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}New Warehouse Form{% endblock %}
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class="row mt-4 mb-4">
+    <div class="col-10 mx-auto">
+        <h1>Add a New Warehouse</h1>
+        <h6>Fill out the form below to add a new warehouse to which inventory items can be assigned.</h6>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-10 mx-auto">
+        <form>
+            <label for="warehouse-name" class="form-label">Warehouse name (this will be displayed in item inventory):</label>
+            <input type="text" class="form-control mb-3" name="warehouse-name" id="warehouse-name">
+            <label for="street-address" class="form-label">Street address: </label>
+            <input type="text" class="form-control mb-3" name="street-address" id="street-address">
+            <label for="city" class="form-label">City: </label>
+            <input type="text" class="form-control mb-3" name="city" id="city">
+            <label for="state" class="form-label">State or Province: </label>
+            <input type="text" class="form-control mb-3" name="state" id="state">
+            <label for="postal-code" class="form-label">Postal Code:</label>
+            <input type="text" class="form-control mb-3" name="postal-code" id="postal-code">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control mb-3" name="country" id="country">
+            <button type="button" class="btn btn-outline-primary add-warehouse">Add this warehouse</button>
+        </form>
+    </div>
+</div>
+<script src='/static/js/newWarehouseForm.js'></script>
+
+
+{% endblock %}

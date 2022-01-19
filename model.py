@@ -44,7 +44,7 @@ class Warehouse(db.Model):
     warehouse_name = db.Column(db.String)
     street_address = db.Column(db.String)
     city = db.Column(db.String)
-    state_or_province = db.Column(db.String(2))
+    state_or_province = db.Column(db.String)
     postal_code = db.Column(db.String)
     country = db.Column(db.String)
 
