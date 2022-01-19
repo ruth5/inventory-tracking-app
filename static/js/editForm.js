@@ -7,6 +7,7 @@ button.addEventListener('click',
     () => {
         const formInputs = {
             serialNumber: document.querySelector('#serial-number').value,
+            warehouseID: document.querySelector('#warehouse-id').value,
         };
 
         const itemID = button.id
@@ -19,7 +20,8 @@ button.addEventListener('click',
         }).then(response => response.json())
             .then(responseJson => {
                 alert(responseJson.status);
+                window.location.href = `/items`;
             });
-        window.location.href = `/items`
+
     }
 );

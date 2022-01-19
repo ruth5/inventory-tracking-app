@@ -16,15 +16,32 @@
 <div class="row">
     <div class="col-10 mx-auto">
         {% if item.serial_number %}
-        <p>Editting item data for <strong>{{item.product.product_name}}</strong> item with current serial number {{item.serial_number}}</p>
+        <p>Editting item data for <strong>{{item.product.product_name}}</strong> item.</p>
+        <ul>
+            <li>Current serial number: {{item.serial_number}}</li>
+            <li>Current inventory location: <strong>{{item.warehouse.warehouse_name}}</strong> warehouse</li>
+        </ul>
         {% else %}
-        <p>Editting item data for <strong>{{item.product.product_name}}</strong> item. This item currently has no serial number.</p>
-        {% endif %}
+        <p>Editting item data for <strong>{{item.product.product_name}}</strong> item.</p>
+        <ul>
+            <li> This item currently has no serial number. </li>
+            <li>Current inventory location: <strong>{{item.warehouse.warehouse_name}}</strong> warehouse</li>
+            {% endif %}
+        </ul>
+
         <form>
             <label for="serial-number" class="form-label">Enter the item's updated serial number (leave blank if no
                 serial)</label>
             <input type="text" class="form-control mb-3" name="serial-number" id="serial-number">
-            <button type="button" class="btn btn-outline-primary edit-button" id={{item.id}}>Update this item's data</button>
+
+            <label for="warehouse-id" class="form-label">Select an updated warehouse location for this item</label>
+            <select class="form-control mb-3" id="warehouse-id" name="warehouse-id">
+                {% for warehouse in warehouses %}
+                <option value={{warehouse.id}}>{{warehouse.warehouse_name}}</option>
+                {% endfor %}
+            </select>
+            <button type="button" class="btn btn-outline-primary edit-button" id={{item.id}}>Update this item's
+                data</button>
         </form>
     </div>
 </div>

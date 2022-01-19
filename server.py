@@ -23,14 +23,14 @@ def create_item():
     product_id = request.form.get('product-id')
     warehouse_id = request.form.get('warehouse-id')
     serial_number = request.form.get('serial-number')
-    product = crud.get_product_by_id(int(product_id))
-    warehouse = crud.get_warehouse_by_id(int(warehouse_id))
+    product = crud.get_product_by_id(product_id)
+    warehouse = crud.get_warehouse_by_id(warehouse_id)
 
     crud.create_item(product_id, warehouse_id, serial_number)
     if serial_number:
-        flash(f"{product.product_name} with serial number {serial_number} added to inventory")
+        flash(f"{product.product_name} with serial number {serial_number} added to {warehouse.warehouse_name} warehouse inventory")
     else:
-        flash(f"A new {product.product_name} item was added to inventory")
+        flash(f"A new {product.product_name} item was added to {warehouse.warehouse_name} warehouse inventory")
     return render_template('items.html', items = crud.get_items())
 
 @app.route('/items/<item_id>', methods = ['PUT'])
@@ -38,8 +38,10 @@ def edit_item(item_id):
     """Edit an item's data."""
 
     serial_number = request.json.get("serialNumber")
+    warehouse_id = request.json.get("warehouseID")
     item = crud.get_item_by_id(item_id)
     item.serial_number = serial_number
+    item.warehouse_id = int(warehouse_id)
     db.session.commit()
     return { "success": True, "status": "Item data has been updated"}
 
@@ -65,7 +67,7 @@ def show_edit_item_form():
     """Display a form where users can edit existing items."""
 
     item_id = request.args.get('item-id')
-    return render_template('edit-item-form.html', item=crud.get_item_by_id(item_id))
+    return render_template('edit-item-form.html', item=crud.get_item_by_id(item_id), warehouses = crud.get_warehouses())
 
 
 
