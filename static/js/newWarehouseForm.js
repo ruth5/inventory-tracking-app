@@ -1,4 +1,4 @@
-// Submit a put request for the completion of the edit form
+// Submit a POST request to add a new warehouse upon the completion of the new warehouse form.
 'use strict';
 
 const button = document.getElementsByClassName("add-warehouse")[0]
