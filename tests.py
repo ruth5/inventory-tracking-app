@@ -1,9 +1,13 @@
+"""Tests for Inventory Tracking app"""
+
+"""Important: the first time this script is run, run "createdb inventory_test_db" on the command line to create the test database."""
+
+
 import server
 import unittest
 import crud
 from model import db, connect_to_db, Warehouse, Product, Item
 
-"""Important: the first time this script is run, run "createdb inventory_test_db" on the command line to create the test database."""
 
 def test_data():
     """Data for test db for tests"""

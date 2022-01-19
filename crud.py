@@ -77,6 +77,13 @@ def get_warehouse_by_id(warehouse_id):
 
     return Warehouse.query.filter_by(id=warehouse_id).first()
 
+def delete_item(item_to_delete):
+    """Delete the item from the database"""
+
+    db.session.delete(item_to_delete)
+    db.session.commit()
+
+
 
 if __name__ == '__main__':
     from server import app

@@ -50,10 +50,8 @@ class Warehouse(db.Model):
 
     items = db.relationship("Item", back_populates="warehouse")
 
-
     def __repr__(self):
         return f"<Warehouse id={self.id} warehouse_name={self.warehouse_name}"
-
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///inventory_track_app", echo=False):
@@ -63,8 +61,6 @@ def connect_to_db(flask_app, db_uri="postgresql:///inventory_track_app", echo=Fa
 
     db.app = flask_app
     db.init_app(flask_app)
-
-    # print("Connected to the db!")
 
 
 if __name__ == "__main__":
