@@ -20,6 +20,7 @@
         <table class="table">
             <thead>
                 <th scope="col">Product Name</th>
+                <th scope="col">Warehouse</th>
                 <th scope="col">Serial Number</th>
                 <th scope="col">Edit?</th>
                 <th scope="col">Delete?</th>
@@ -29,19 +30,21 @@
 
             <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
- 
                     <td>
                         <a class="btn btn-outline-primary form-control" href="/new-item-form" role="button">Add a new
                             item to inventory</a>
 
                     </td>
                     <td></td>
+                    <td></td>
+ 
+
+                    <td></td>
                 </tr>
                 {% for item in items %}
                 <tr>
                     <td>{{item.product.product_name}}</td>
+                    <td>{{item.warehouse.warehouse_name}}</td>
                     {% if item.serial_number %}
                     <td>{{item.serial_number}}</td>
                     {% else %}

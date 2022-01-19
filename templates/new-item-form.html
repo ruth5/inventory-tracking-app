@@ -22,6 +22,12 @@
                 <option value={{product.id}}>{{product.product_name}}</option>
                 {% endfor %}
             </select>
+            <label for="warehouse-id" class="form-label">Warehouse Name</label>
+            <select class="form-control mb-3" id="warehouse-id" name="warehouse-id">
+                {% for warehouse in warehouses %}
+                <option value={{warehouse.id}}>{{warehouse.warehouse_name}}</option>
+                {% endfor %}
+            </select>
             <label for="serial-number" class="form-label">Enter the item's serial number (leave blank if no
                 serial)</label>
             <input type="text" class="form-control mb-3" name="serial-number">

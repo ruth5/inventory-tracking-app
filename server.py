@@ -17,14 +17,16 @@ def get_items():
     return render_template('items.html', items = crud.get_items())
 
 @app.route('/items', methods = ['POST'])
-def add_item():
+def create_item():
     """Add a new item to inventory based on the output of the new item form."""
 
     product_id = request.form.get('product-id')
-    print(product_id)
+    warehouse_id = request.form.get('warehouse-id')
     serial_number = request.form.get('serial-number')
     product = crud.get_product_by_id(int(product_id))
-    crud.create_item(product_id, serial_number)
+    warehouse = crud.get_warehouse_by_id(int(warehouse_id))
+
+    crud.create_item(product_id, warehouse_id, serial_number)
     if serial_number:
         flash(f"{product.product_name} with serial number {serial_number} added to inventory")
     else:
@@ -56,7 +58,7 @@ def delete_item(item_id):
 def show_new_item_form():
     """Display a form where users can generate new items."""
 
-    return render_template('new-item-form.html', products = crud.get_products())
+    return render_template('new-item-form.html', products = crud.get_products(), warehouses = crud.get_warehouses())
 
 @app.route('/edit-item-form', methods = ['GET'])
 def show_edit_item_form():
