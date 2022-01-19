@@ -20,6 +20,26 @@ Frontend: JavaScript, HTML/CSS, Bootstrap
 - `/static/js/` contains all JavaScript files, mainly used to send fetch requests to backend.
 - `tests.py` contains tests for the application
 
+# Data Model
+See below for the data model that is implemented in `model.py`
+
+![data model](./readme-images/data-model.png)
+
+
+# App Functionality and Screencasts
+
+On the item inventory page, users can view an overview of all items in inventory
+
+![item inventory](./readme-images/item-inventory.gif)
+
+Users can create a new warehouse location, and edit items in inventory to assign to a different warehouse location. Users can also edit other item data, such as item serial number, at the same time.
+
+![new warehouse location and edit item](./readme-images/add-warehouse-and-edit-item.gif)
+
+Users can also delete existing items from inventory, and create new items to add to inventory.
+
+![delete existing item and add new item to inventory](./readme-images/delete-and-add-new-item.gif)
+
 # Running the app
 
 - Set up and activate a python virtual environment. In the command line, run:
